@@ -1,0 +1,35 @@
+#!/usr/bin/ruby
+# encoding: utf-8
+# (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
+
+$:.push("./lib")
+$:.unshift("./lib")
+
+require "em-file-utils"
+require "riot"
+
+## FILE
+
+context "EM::FileUtils" do
+    asserts("#touch") do 
+        EM::FileUtils::touch("./~test1").execute!
+        File.exists? "./~test1"
+    end
+    asserts("#cp") do 
+        EM::FileUtils::cp("./~test1", "./~test2").execute!
+        File.exists? "./~test2"
+    end
+    asserts("#mv") do 
+        EM::FileUtils::mv("./~test2", "./~test3").execute!
+        File.exists? "./~test3"
+    end
+    asserts("#rm") do 
+        EM::FileUtils::rm("./~test3").execute!  
+        not File.exists? "./~test3"
+    end
+    
+    teardown do 
+        File.unlink("./~test1")
+    end
+end
+

@@ -1,0 +1,26 @@
+#!/usr/bin/ruby
+# encoding: utf-8
+# (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
+
+$:.push("./lib")
+$:.unshift("./lib")
+
+require "eventmachine"
+require "em-file-utils"
+
+## FILE
+
+EM::run do
+    EM::FileUtils::touch("./~test1").execute do
+        EM::FileUtils::cp("./~test1", "./~test2").execute do
+            EM::FileUtils::mv("./~test2", "./~test3").execute do
+                EM::FileUtils::rm("./~test1").execute do
+                    puts (not File.exists? "./~test1" and File.exists? "./~test3")
+                    
+                    File.unlink("./~test3")
+                    EM::stop
+                end
+            end
+        end
+    end
+end
