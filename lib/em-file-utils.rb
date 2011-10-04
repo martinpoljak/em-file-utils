@@ -29,7 +29,7 @@ module EM
         #
         # @param [String] from source path
         # @param [String] to target path
-        # @return [CommandBuilder] returns the command builder object
+        # @return [CommandBuilder] the command builder object
         # 
 
         def self.cp(from, to)
@@ -45,7 +45,7 @@ module EM
         #
         # @param [String] from source path
         # @param [String] to target path
-        # @return [CommandBuilder] returns the command builder object
+        # @return [CommandBuilder] the command builder object
         # 
         
         def self.mv(from, to)
@@ -59,7 +59,7 @@ module EM
         # Removes object using +rm -r+ command.
         #
         # @param [String] path path to file
-        # @return [CommandBuilder] returns the command builder object
+        # @return [CommandBuilder] the command builder object
         # 
         
         def self.rm(path)
@@ -73,7 +73,7 @@ module EM
         # Touches file using +touch+ command.
         #
         # @param [String] path to the file
-        # @return [CommandBuilder] returns the command builder object
+        # @return [CommandBuilder] the command builder object
         #
         
         def self.touch(path)
@@ -81,6 +81,20 @@ module EM
             cmd << path
             cmd
         end
+        
+        ##
+        # Creates directory using +mkdir -p+ command.
+        #
+        # @param [String] directory path
+        # @return [CommandBuilder] the command builder object
+        #
+        
+        def self.mkdir(path)
+            cmd = __get(:mkdir)
+            cmd << :p
+            cmd << path
+            cmd
+        end 
 
         
         private
