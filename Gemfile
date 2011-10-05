@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # Example:
 
 gem "hash-utils", ">= 0.8.0"
-gem "command-builder", ">= 0.2.0"
+gem "command-builder", ">= 0.2.1"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

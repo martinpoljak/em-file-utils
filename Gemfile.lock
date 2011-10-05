@@ -5,16 +5,16 @@ GEM
       hash-utils (>= 0.18.0)
       pipe-run (>= 0.2.1)
     git (1.2.5)
-    hash-utils (0.18.0)
+    hash-utils (0.19.0)
     jeweler (1.6.4)
       bundler (~> 1.0)
       git (>= 1.2.5)
       rake
     pipe-run (0.2.1)
     rake (0.9.2)
-    riot (0.12.4)
+    riot (0.12.5)
       rr
-    rr (1.0.3)
+    rr (1.0.4)
 
 PLATFORMS
   ruby
