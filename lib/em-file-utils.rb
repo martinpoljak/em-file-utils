@@ -2,8 +2,6 @@
 # (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
 
 require "command-builder"
-require "hash-utils/object"   # >= 0.8.0
-
 
 ##
 # Main EventMachine module.
@@ -106,7 +104,7 @@ module EM
         def self.__get(command)
             command = command.to_sym
             
-            if command.in? @@cache
+            if @@cache.include? command
                 command = @@cache[command]
                 command.reset!  # returns
             else
@@ -116,4 +114,3 @@ module EM
         
     end
 end
-
